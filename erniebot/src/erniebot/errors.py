@@ -35,6 +35,12 @@ __all__ = [
 class EBError(Exception):
     """Base exception class for the erniebot library."""
 
+    def __init__(self, message: Optional[Any] = None, *args, **kwargs):
+        if message is None:
+            message = str(self.__class__.__name__)
+        message = message
+        super().__init__(message, *args, **kwargs)
+
 
 class ArgumentNotFoundError(EBError):
     """An argument was not found."""
